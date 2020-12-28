@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="main.css">
+		<script src="scroll.js"></script>
+		<script src="char.js"></script>
+		<style>
+			.tool{
+				font-size: 0.85em;
+				padding: 2.5px;
+			}
+			textarea {
+				resize: none;
+				font-family: color-basic;
+				color: white;
+				background-color: black;
+				text-transform: uppercase;
+				border-style: solid;
+				border-width: medium;
+				overflow: hidden
+			}
+		</style>
+	</head>
+	<body onLoad="load()" onscroll="scroller()">
+
+		<div class="element titleBarer" id="titleBar">
+			<div id="whitening">
+				<span class="title"><b>//:STANDALONE_CHARACTER_SHEET</b></span>
+			</div>
+		</div>
+
+		<div class="element titleBarer">
+			<table>
+				<tr>
+					<td style="width:100%"><span class="heading"><b>TOOLS</b></span></td>
+					<td><button class="button tool" onclick="hide()">HIDE</button></td>
+				</tr>
+			</table>
+			<table>
+				<tr id="tools">
+					<td><button class="button tool" onclick="edit()">EDIT</button></td>
+					<td><button class="button tool" onclick="save()">SAVE</button></td>
+					<td><button class="button tool" onclick="loadChar()">LOAD</button></td>
+				</tr>
+			</table>
+			<div id="load" style="display: none;">
+				<input id="fileLoader" type="file" accept=".chr">
+			</div>
+		</div>
+
+		<div class="element">
+				<table class="big">
+					<tr>
+						<th>NAME</th>
+						<th>AGE</th>
+						<th>TERMS</th>
+						<th>RACE</th>
+						<th>HOMEWORLD</th>
+					</tr>
+					<tr>
+						<td><textarea class="edit basic" onkeyup="handleBasic(this)" rows="1" cols="15"></textarea></td>
+						<td><textarea class="edit basic" onkeyup="handleBasic(this)" rows="1" cols="4" ></textarea></td>
+						<td><textarea class="edit basic" onkeyup="handleBasic(this)" rows="1" cols="5" ></textarea></td>
+						<td><textarea class="edit basic" onkeyup="handleBasic(this)" rows="1" cols="15"></textarea></td>
+						<td><textarea class="edit basic" onkeyup="handleBasic(this)" rows="1" cols="15"></textarea></td>
+					</tr>
+				</table>
+				<table class="small" style="display:none">
+					<tr>
+						<th>NAME</th>
+						<td><input class="edit" type="text"></td>
+					</tr>
+					<tr>
+						<th>AGE</th>
+						<td><input class="edit" type="text"></td>
+					</tr>
+					<tr>
+						<th>TERMS</th>
+						<td><input class="edit" type="text"></td>
+					</tr>
+					<tr>
+						<th>RACE</th>
+						<td><input class="edit" type="text"></td>
+					</tr>
+					<tr>
+						<th>HOMEWORLD</th>
+						<td><input class="edit" type="text"></td>
+					</tr>
+				</table>
+		</div>
+
+		<div class="element">
+			<span class="heading"><b>CHARACTERISTICS</b></span>
+			<table>
+				<tr>
+					<th></th>
+					<td> </td>
+					<th>BASE</th>
+					<th>TEMP</th>
+					<th>MOD</th>
+				</tr>
+				<tr>
+					<th>STRENGTH</th>
+					<td> </td>
+					<td><input size="2" class="str edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="str edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="str" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+				<tr>
+					<th>DEXTERITY</th>
+					<td> </td>
+					<td><input size="2" class="dex edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="dex edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="dex" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+				<tr>
+					<th>ENDURANCE</th>
+					<td> </td>
+					<td><input size="2" class="end edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="end edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="end" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+				<tr>
+					<th>INTELLIGENCE</th>
+					<td> </td>
+					<td><input size="2" class="int edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="int edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="int" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+				<tr>
+					<th>EDUCATION</th>
+					<td> </td>
+					<td><input size="2" class="edu edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="edu edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="edu" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+				<tr>
+					<th>SOCIAL STANDING</th>
+					<td> </td>
+					<td><input size="2" class="soc edit" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="soc edit" oninput="updateMod(this)" type="number" max="99" min="0" value="0"></td>
+					<td><input size="2" class="soc" type="number" max="99" min="-99" value="0" disabled="true"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="element" id="E0">
+			<span class="heading"><b>ARMOUR</b></span>
+			<table>
+				<tr>
+					<th>TYPE</th>
+					<th>TL</th>
+					<th>RATING</th>
+					<th>SKILL</th>
+					<th>LOCATION</th>
+					<th>MASS</th>
+					<th>NOTES</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,0)">+</button></td></tr>
+			</table>
+		</div>
+
+		<div class="element" id="E1">
+			<span class="heading"><b>SKILLS</b></span>
+			<table>
+				<tr>
+					<th>NAME</th>
+					<th>SPECIALITY</th>
+					<th>LVL</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,1)">+</button></td></tr>
+			</table>
+		</div>
+
+		<div class="element" id="E2">
+			<span class="heading"><b>WEAPONS</b></span>
+			<table>
+				<tr>
+					<th>WEAPON</th>
+					<th>TL</th>
+					<th>MASS</th>
+					<th>ROF</th>
+					<th>ATK</th>
+					<th>DMG</th>
+					<th>MAG</th>
+					<th>RANGE</th>
+					<th>NOTES</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,2)">+</button></td></tr>
+			</table>
+		</div>
+
+		<div class="element" id="E3">
+			<span class="heading"><b>EQUIPMENT</b></span>
+			<table>
+				<tr>
+					<th>NAME</th>
+					<th>MASS</th>
+					<th>NOTES</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,3)">+</button></td></tr>
+			</table>
+		</div>
+
+		<div class="element" id="E4">
+			<span class="heading"><b>PSIONIC_POWERS</b></span>
+			<table>
+				<tr>
+					<th>TALENT</th>
+					<th>POWER</th>
+					<th>PSI_COST</th>
+					<th>NOTES</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,4)">+</button></td></tr>
+			</table>
+		</div>
+
+		<div class="element" id="finances">
+			<span class="heading"><b>FINANCES</b></span>
+			<table>
+				<tr>
+					<th>PENSION</th>
+					<td><textarea class="edit" onkeyup="handleBasic(this)" rows="1" cols="10"></textarea></td>
+					<td>cr</td>
+				</tr>
+				<tr>
+					<th>DEBT</th>
+					<td><textarea class="edit" onkeyup="handleBasic(this)" rows="1" cols="10"></textarea></td>
+					<td>cr</td>
+				</tr>
+				<tr>
+					<th>CASH ON HAND</th>
+					<td><textarea class="edit" onkeyup="handleBasic(this)" rows="1" cols="10"></textarea></td>
+					<td>cr</td>
+				</tr>
+				<tr>
+					<th>MONTHLY SHIP PAYMENTS</th>
+					<td><textarea class="edit" onkeyup="handleBasic(this)" rows="1" cols="10"></textarea></td>
+					<td>cr</td>
+				</tr>
+				<tr>
+					<th>PAYMENTS REMAINING</th>
+					<td><textarea class="edit" onkeyup="handleBasic(this)" rows="1" cols="10"></textarea></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="element" id="E5">
+			<span class="heading"><b>CAREER_HISTORY</b></span>
+			<table>
+				<tr>
+					<th>CAREER</th>
+					<th>BRANCH</th>
+					<th>EVENTS</th>
+					<th>RANK</th>
+					<th>TITLE</th>
+				</tr>
+			</table>
+			<table>
+				<tr><td><button class="edit" onclick="handleAdd(this,5)">+</button></td></tr>
+			</table>
+		</div>
+
+	</body>
+</html>

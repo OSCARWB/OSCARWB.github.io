@@ -1,0 +1,138 @@
+@font-face
+{
+	font-family: color-basic;
+	src: url(fonts/ColorBasic-Regular2.ttf);
+}
+
+@font-face
+{
+	font-family: unifont;
+	src: url(fonts/unifont-12.1.04.ttf);
+}
+
+@font-face
+{
+	font-family: cybernaut;
+	src: url(fonts/cybernaut-sigma.ttf);
+}
+
+body
+{
+	background-color: black;
+	color: white
+}
+
+a
+{
+	text-decoration: none;
+}
+
+input[type="text"]
+{
+	font-family: color-basic;
+	color: white;
+	background-color: black;
+	text-transform: uppercase;
+	border-style: solid;
+}
+input[type="number"]
+{
+	font-family: color-basic;
+	color: white;
+	background-color: black;
+	text-transform: uppercase;
+	border-style: solid;
+}
+
+.button
+{
+	background-color: white;
+	border: none;
+	color: black;
+	font-family: color-basic;
+	text-align: center;
+	padding: 5px 5px;
+	text-decoration: none;
+	display: inline-block;
+	margin: 1%;
+}
+
+.element
+{
+	font-family: color-basic;
+	background-color: black;
+	border-color: white;
+	border-style: solid;
+	margin:1vh;
+	padding: 5px;
+}
+
+.innerElement
+{
+	padding-top:5px;
+}
+
+.heading
+{
+	background-color: white;
+	color: black;
+}
+.title
+{
+	background-color: white;
+	color: black;
+}
+#heading
+{
+	background-color:black;
+	color: white;
+}
+#stuff
+{
+	flex: 0 1 auto;
+}
+#innerElement
+{
+	padding-top:5px;
+}
+#map
+{
+	flex: 1 0 auto;
+}
+
+.flexContainer
+{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: stretch;
+}
+
+.flexContainerEncyclopedia
+{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.container 
+{
+    position: relative;
+}
+  
+#whitening
+{
+	background-color: white;
+}
+ 
+#text {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+}
